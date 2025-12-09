@@ -8,7 +8,7 @@ Este repositório reúne scripts para avaliar abordagens clássicas e quânticas
 - Dependências principais: `torch`, `torchvision`, `pennylane`, `pandas`, `scikit-learn`, `numpy`. Instale-as, por exemplo:
 
   ```bash
-  pip install torch torchvision medmnist matplotlib torchmetrics seaborn scikit-learn scipy
+  pip install torch torchvision medmnist matplotlib torchmetrics[image] seaborn scikit-learn scipy pennylane
 
   ```
 
