@@ -60,7 +60,7 @@ Principais flags (com padrões):
 - `--output-dir`: pasta de resultados (padrão `experiments_outputs`).
 - Backend PennyLane: `--qml-backend` (`lightning.qubit`), `--qml-diff-method` (`parameter-shift`), `--qml-batch-obs` (inteiro ou `None`), `--qml-mpi` (habilita MPI para `lightning.gpu`), `--qml-circuit-device` (força device Torch usado nas QNodes, ex.: `cuda`).
 
-Exemplo prático:
+### Exemplo prático:
 ```bash
 python run_patchqgan_experiments.py --repeats=100
 ```
