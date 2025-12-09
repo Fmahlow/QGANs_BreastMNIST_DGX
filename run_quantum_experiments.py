@@ -1,11 +1,3 @@
-"""Pipeline unificado para treinar e avaliar os geradores quânticos.
-
-O módulo espelha o fluxo definido em ``run_classical_experiments.py`` para
-produzir as mesmas tabelas de saída (qualidade, eficiência e impacto na
-classificação), mas aplicando as rotinas das arquiteturas PatchQGAN e MOSAIQ
-documentadas nos notebooks ``gans_quantum_resources.ipynb``,
-``gans_quantum_fid_is.ipynb`` e ``mosaiq_resources.ipynb``.
-"""
 from __future__ import annotations
 
 import argparse
