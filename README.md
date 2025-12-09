@@ -35,23 +35,14 @@ Todos os scripts salvam saídas em um diretório (padrão: `experiments_outputs`
 O script aceita um JSON opcional com a configuração completa de `RunConfig`. Sem parâmetros, usa valores padrão (ex.: `breastmnist`, `gan_epochs=50`, `batch_size=128`, `repeats=5`).
 
 ```bash
-python run_classical_experiments.py [--config caminho/para/config.json]
+python run_classical_experiments.py [opções]
 ```
 
-Exemplo de `config.json` mínimo que altera épocas e diretório de saída:
 
-```json
-{
-  "gan_epochs": 30,
-  "clf_epochs": 5,
-  "output_dir": "meus_resultados"
-}
-```
-
-### 2) Experimentos quânticos completos (PatchQGAN + MOSAIQ)
+### 2) Experimentos quânticos (PatchQGAN ou MOSAIQ)
 
 ```bash
-python run_quantum_experiments.py [opções]
+python run_patchqgan_experiments.py [opções]
 ```
 
 Principais flags (com padrões):
@@ -69,33 +60,11 @@ Principais flags (com padrões):
 - `--output-dir`: pasta de resultados (padrão `experiments_outputs`).
 - Backend PennyLane: `--qml-backend` (`lightning.qubit`), `--qml-diff-method` (`parameter-shift`), `--qml-batch-obs` (inteiro ou `None`), `--qml-mpi` (habilita MPI para `lightning.gpu`), `--qml-circuit-device` (força device Torch usado nas QNodes, ex.: `cuda`).
 
-Exemplo para rodar com backend clássico e salvar em pasta dedicada:
-
+Exemplo prático:
 ```bash
-python run_quantum_experiments.py --qml-backend default.qubit --output-dir resultados_quanticos
+python run_patchqgan_experiments.py --repeats=100
 ```
 
-### 3) PatchQGAN isolado
-
-```bash
-python run_patchqgan_experiments.py [opções]
-```
-
-Recebe o mesmo conjunto de flags de `run_quantum_experiments.py`, exceto `--mosaiq-batch-size` (não usado). Use-o quando quiser avaliar apenas o PatchQGAN.
-
-### 4) MOSAIQ isolado
-
-```bash
-python run_mosaiq_experiments.py [opções]
-```
-
-As flags correspondem às de `run_quantum_experiments.py` e incluem `--mosaiq-batch-size` para controlar o tamanho de batch do gerador MOSAIQ.
 
 ## Saídas e onde encontrar
-
-Cada execução gera CSVs no diretório escolhido contendo métricas de treino, qualidade de síntese (FID/IS), estratégias de balanceamento e combinações de rácios de dados sintéticos. Um arquivo `*_config_used*.json` registra exatamente os parâmetros usados para reproducibilidade.
-
-## Dicas de ambiente
-
-- Para backends `lightning.*`, instale o pacote correspondente e certifique-se de que a GPU e os drivers estejam configurados.
-- Caso um backend solicitado não esteja disponível, o código faz fallback para `default.qubit` quando possível, emitindo um aviso. Ajuste `--qml-backend` se precisar evitar esse comportamento.
+Cada execução gera CSVs no diretório escolhido contendo métricas de treino, qualidade de síntese (FID/IS), estratégias de balanceamento e combinações de rácios de dados sintéticos. 
