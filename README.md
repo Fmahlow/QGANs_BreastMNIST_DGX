@@ -1,4 +1,4 @@
-# QGANs BreastMNIST em DGX
+# QGANs BreastMNIST
 
 Este repositório reúne scripts para avaliar abordagens clássicas e quânticas de geração de imagens no BreastMNIST/MedMNIST. Ele contém entradas de linha de comando que executam experimentos completos (treino das GANs, métricas de qualidade das imagens sintéticas e testes com classificadores) gerando planilhas CSV e registros de configuração.
 
@@ -8,19 +8,24 @@ Este repositório reúne scripts para avaliar abordagens clássicas e quânticas
 - Dependências principais: `torch`, `torchvision`, `pennylane`, `pandas`, `scikit-learn`, `numpy`. Instale-as, por exemplo:
 
   ```bash
-  pip install torch torchvision pennylane pandas scikit-learn numpy
+  pip install torch torchvision medmnist matplotlib torchmetrics seaborn scikit-learn scipy
+
   ```
 
 - GPU é opcional, mas acelera os experimentos. Para usar o backend quântico `lightning.gpu`, instale `pennylane-lightning[gpu]` ou ajuste `--qml-backend` para um backend disponível.
 
 ## Estrutura dos scripts
 
+### Arquivos para Rodar
 - `run_classical_experiments.py`: Treina e avalia DCGAN, CGAN e WGAN-GP como baselines clássicos, exportando métricas em CSV.
-- `run_quantum_experiments.py`: Orquestra experimentos completos com os geradores quânticos PatchQGAN e MOSAIQ (inclusive classificadores e variações de balanceamento de dados sintéticos).
 - `run_patchqgan_experiments.py`: Executa apenas o pipeline do PatchQGAN para experimentos isolados.
 - `run_mosaiq_experiments.py`: Executa apenas o pipeline MOSAIQ para experimentos isolados.
-- `quantum_gan_medmnist.py`: Implementações das arquiteturas quânticas e utilitários compartilhados.
 
+### Arquivos de Apoio
+- `run_quantum_experiments.py`: Orquestra experimentos completos com os geradores quânticos PatchQGAN e MOSAIQ (inclusive classificadores e variações de balanceamento de dados sintéticos).
+- `quantum_gan_medmnist.py`: Implementações das arquiteturas quânticas e utilitários compartilhados.
+- `classical_gans.py`: Implementações das arquiteturas classicas e utilitários compartilhados.
+- 
 Todos os scripts salvam saídas em um diretório (padrão: `experiments_outputs`) e gravam um arquivo JSON com a configuração efetivamente utilizada.
 
 ## Como executar
