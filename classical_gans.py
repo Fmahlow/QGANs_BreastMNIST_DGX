@@ -1,11 +1,3 @@
-"""Classical GAN architectures and training loops for MedMNIST experiments.
-
-This module centralises the neural network definitions and helper training
-functions that were previously scattered across the
-``gan_classical_medmnist.ipynb`` notebook.  Having the implementations in a
-Python module keeps the notebook concise while still allowing reuse across
-experiments.
-"""
 from __future__ import annotations
 
 from typing import Iterable, List, Optional, Tuple
